@@ -13,6 +13,7 @@ object PiEstimation {
     val NUM_SAMPLES = 100000
 
     val count = sc.parallelize(1 to NUM_SAMPLES)
+      .repartition(8)
       .map(idx => {
         var res = 0
         for (i <- 0 until 1000000) {
